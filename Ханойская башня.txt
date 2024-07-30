@@ -1,0 +1,17 @@
+x = int(input())
+d = {1: sorted(list(range(1, x + 1)), reverse = True), 2: [], 3: []}
+fr = 1
+to = 3
+buf = 2
+n = len(d[fr])
+def hanoi(n, fr, to):
+    if n == 1:
+        d[to].append(d[fr].pop())
+        return print(f'{fr} - {to}')
+    else:
+        buf = 6 - fr - to
+        hanoi(n - 1, fr, buf)
+        d[to].append(d[fr].pop())
+        print(f'{fr} - {to}')
+        hanoi(n - 1, buf, to)
+hanoi(n, fr, to)
